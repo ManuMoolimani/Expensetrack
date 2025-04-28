@@ -6,7 +6,7 @@ function ExpenseForm({ setExpenses }) {
 
   const handleAddExpense = (e) => {
     e.preventDefault();
-    
+
     if (!description || !amount) {
       alert('Please fill all fields!');
       return;
@@ -29,21 +29,34 @@ function ExpenseForm({ setExpenses }) {
 
   return (
     <div className="expense-form">
-      <h3>Add New Expense</h3>
-      <form onSubmit={handleAddExpense} className="form">
-        <input 
-          type="text"
-          placeholder="Description (e.g., Grocery)"
-          value={description}
-          onChange={(e) => setDescription(e.target.value)}
-        />
-        <input 
-          type="number"
-          placeholder="Amount (e.g., 100)"
-          value={amount}
-          onChange={(e) => setAmount(e.target.value)}
-        />
-        <button type="submit">Add Expense</button>
+      <h3 className="text-center mb-4" style={{ color: "#4e73df" }}>Add New Expense</h3>
+
+      <form onSubmit={handleAddExpense}>
+        <div className="mb-3">
+          <input 
+            type="text"
+            className="form-control"
+            placeholder="Description (e.g., Grocery)"
+            value={description}
+            onChange={(e) => setDescription(e.target.value)}
+            required
+          />
+        </div>
+
+        <div className="mb-3">
+          <input 
+            type="number"
+            className="form-control"
+            placeholder="Amount (e.g., 100)"
+            value={amount}
+            onChange={(e) => setAmount(e.target.value)}
+            required
+          />
+        </div>
+
+        <div className="d-grid">
+          <button type="submit" className="btn btn-primary">Add Expense</button>
+        </div>
       </form>
     </div>
   );
